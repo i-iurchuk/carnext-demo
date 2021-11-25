@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Demo app</title>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+
+  <script>
+    console.log('Start:', Math.round(performance.now()));
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+  <script>
+    console.log('Library loaded:', Math.round(performance.now()));
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOMContentLoaded', Math.round(performance.now()))
+    });
+
+    window.onload = () => {
+      console.log('All content loaded', Math.round(performance.now()))
+    }
+  </script>
+</head>
+<body>
+  <div id="logo">
+    <img src="https://www.meme-arsenal.com/memes/95cf922347ef6b7d7b4bf497f60f2a2b.jpg" height="300" />
+  </div>
+
+  <div id="root">
+    <div id="loader">Loading...</div>
+  </div>
+</body>
+</html>

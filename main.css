@@ -1,0 +1,21 @@
+body {
+    width: 100%
+}
+  
+#logo {
+    text-align: center;
+    margin-top: 50px;
+}
+  
+#root {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+  
+#root img {
+    margin: 5px;
+}
+  
