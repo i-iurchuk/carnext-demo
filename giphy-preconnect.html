@@ -25,9 +25,12 @@
 
           const imgElements = response.data.map(item => {
             const img = document.createElement('img');
-            img.src = item.images.preview_webp.url;
-            img.height = item.images.preview_webp.height;
-            img.width = item.images.preview_webp.width;
+
+            if(item.images.preview_webp) { 
+              img.src = item.images.preview_webp.url;
+              img.height = item.images.preview_webp.height;
+              img.width = item.images.preview_webp.width;
+            } 
             return img;
           })
 
