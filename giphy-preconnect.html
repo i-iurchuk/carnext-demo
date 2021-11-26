@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Demo app</title>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOMContentLoaded', Math.round(performance.now()))
+    });
+
+    /** Load images **/
+    $(document).ready(() => {
+      const KEYWORD = 'cats';
+      const LIMIT = 25;
+
+      const START = Math.round(performance.now());
+      $.get(`https://api.giphy.com/v1/gifs/search?api_key=b9rBJzaSGJvCDpNo1GrhVEOIev560Pn4&q=${KEYWORD}&limit=${LIMIT}&offset=0&rating=G&lang=en`)
+        .done((response) => {
+
+          console.log('Images loading finished in (ms):', Math.round(performance.now()) - START)
+          console.log('ms passed:', Math.round(performance.now()))
+
+          const imgElements = response.data.map(item => {
+            const img = document.createElement('img');
+            img.src = item.images.preview_webp.url;
+            img.height = item.images.preview_webp.height;
+            img.width = item.images.preview_webp.width;
+            return img;
+          })
+
+          $("#loader").replaceWith(imgElements);
+        });
+    });
+  </script>
+</head>
+<body>
+  <div id="logo">
+    <img src="https://www.meme-arsenal.com/memes/95cf922347ef6b7d7b4bf497f60f2a2b.jpg" height="300" />
+  </div>
+
+  <div id="root">
+    <div id="loader">Loading...</div>
+  </div>
+</body>
+</html>
